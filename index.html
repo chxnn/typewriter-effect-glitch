@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>holes</title>
+
+    <meta name="description" content="A simple exercise template." />
+    <!-- styles -->
+    <style></style>
+  </head>
+  <body>
+    <h1>holes</h1>
+    <p id="para-0"></p>
+    <p id="para-1"></p>
+    <p id="para-2"></p>
+    <!-- script -->
+    <script>
+      const text = [
+        "lemon trees",
+        "chapped lips",
+        "and the spaces you used to fill."
+      ];
+      let paraCounter = 0;
+      let charCounter = 0;
+      let typeWriterInterval;
+
+      function addLetter() {
+        if (paraCounter < text.length) {
+          const para = document.getElementById("para-" + paraCounter);
+          para.innerHTML = text[paraCounter].slice(
+            0,
+            charCounter + 1
+          );
+          charCounter++;
+          if (charCounter >= text[paraCounter].length) {
+            paraCounter++;
+            charCounter = 0;
+          }
+        }
+        else {
+          for (let i=0; i <text.length; i++){
+            const para = document.getElementbyId("para-" + i);
+            para.innerHTML = "";
+          }
+          paraCounter = 0;
+          charCounter = 0;
+        }
+        
+      }
+      typeWriterInterval = setInterval(addLetter, 250);
+    </script>
+    <!-- include the Glitch button to show what the webpage is about and
+          to make it easier for folks to view source and remix -->
+    <div class="glitchButton" style="position:fixed;top:20px;right:20px;"></div>
+    <script src="https://button.glitch.me/button.js" defer></script>
+  </body>
+</html>
